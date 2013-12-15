@@ -1,26 +1,39 @@
 #ifndef COMBATUNIT_H
 #define COMBATUNIT_H
 
+#include <QGraphicsObject>
 #include <QGraphicsItem>
 
 class CombatUnit : public QGraphicsObject {
+    Q_OBJECT
 public:
     enum Side {
         FRIEND,
         FOE
     };
 
-    CombatUnit(Side side);
+    CombatUnit(const QString& name, const Side& side);
 
     void hit();
 
     Side getSide() const;
-    bool getStruck() const;
+    bool isDisabled() const;
+
+    QString getName() const;
+
+    QRectF boundingRect() const;
+    QPainterPath shape() const;
+    void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget);
+
+signals:
+    void send(QString message);
 
 protected:
+    QString name;
+
     Side side;
     QPointF velocity;
-    bool isStruck;
+    bool disabled;
 
     void advance(int phase);
 

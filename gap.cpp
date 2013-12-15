@@ -21,7 +21,7 @@ QPainterPath Gap::shape() const {
 }
 
 void Gap::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*) {
-    painter->drawImage(boundingRect(), QImage("fire.png"));
+    painter->drawImage(boundingRect(), QImage("../ARS/fire.png"));
 }
 
 void Gap::advance(int phase) {

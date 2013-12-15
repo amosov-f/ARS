@@ -34,15 +34,15 @@ void Shell::advance(int phase) {
         foreach (QGraphicsItem* item, collidingItems()) {
             if (dynamic_cast<CombatUnit*>(item) != NULL) {
                 CombatUnit* unit = (CombatUnit*)item;
-                if (!unit->getStruck()) {
+                if (!unit->isDisabled()) {
                     unit->hit();
-                    foreach (QGraphicsItem* gap, scene()->items()) {
+                    /*foreach (QGraphicsItem* gap, scene()->items()) {
                         if (dynamic_cast<Gap*>(gap) != NULL) {
                             if (id == ((Gap*)gap)->getId()) {
                                 scene()->removeItem(gap);
                             }
                         }
-                    }
+                    }*/
                 }
             }
         }
@@ -67,4 +67,8 @@ double Shell::getZ() const {
 
 double Shell::getVelocityZ() const {
     return velocity.z();
+}
+
+int Shell::getId() const {
+    return id;
 }

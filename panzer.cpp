@@ -2,9 +2,13 @@
 #include <QPainter>
 #include <QVector>
 #include <QPointF>
+#include <iostream>
+#include <QGraphicsScene>
 
-Panzer::Panzer(Side side) : CombatUnit(side) {
-    velocity = QPointF(0.05, 0);
+using namespace std;
+
+Panzer::Panzer(const QString& name, const Side& side) : CombatUnit(name, side) {
+    velocity = QPointF(0.04, 0);
     radius = 20;
 }
 

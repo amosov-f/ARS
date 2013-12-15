@@ -5,19 +5,21 @@
 
 using namespace std;
 
-CombatUnit::CombatUnit(Side side) {
+CombatUnit::CombatUnit(const QString& name, const Side& side) {
+    this->name = name;
     this->side = side;
     this->velocity = QPointF(0, 0);
-    this->isStruck = false;
+    this->disabled = false;
 }
 
 void CombatUnit::hit() {
-    isStruck = true;
+    disabled = true;
+    emit destroyed();
 }
 
 void CombatUnit::advance(int phase) {
 
-    if (isStruck) {
+    if (disabled) {
         velocity = QPointF(0, 0);
     }
     setPos(mapToParent(velocity));
@@ -34,7 +36,7 @@ void CombatUnit::advance(int phase) {
 }
 
 QColor CombatUnit::getColor() const {
-    if (isStruck) {
+    if (disabled) {
         return QColor(50, 50, 50);
     }
     if (side == FRIEND) {
@@ -43,10 +45,25 @@ QColor CombatUnit::getColor() const {
     return QColor(0, 0, 255);
 }
 
+QString CombatUnit::getName() const {
+    return name;
+}
+
 CombatUnit::Side CombatUnit::getSide() const {
     return side;
 }
 
-bool CombatUnit::getStruck() const {
-    return isStruck;
+bool CombatUnit::isDisabled() const {
+    return disabled;
+}
+
+QRectF CombatUnit::boundingRect() const {
+    return QRectF();
+}
+
+QPainterPath CombatUnit::shape() const {
+    return QPainterPath();
+}
+
+void CombatUnit::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) {
 }

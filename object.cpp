@@ -1,6 +1,12 @@
 #include "object.h"
+#include <iostream>
 
-Object::Object(QObject *parent) :
-    QObject(parent)
-{
+using namespace std;
+
+void Foo::print() {
+    cout << "!!!" << endl;
+}
+
+Foo::Foo() : QObject() {
+
 }

@@ -14,6 +14,7 @@ public:
 
     double getZ() const;
     double getVelocityZ() const;
+    int getId() const;
 
 private:
     double z;

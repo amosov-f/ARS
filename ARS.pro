@@ -10,7 +10,13 @@ SOURCES += \
     ars.cpp \
     shell.cpp \
     gap.cpp \
-    object.cpp
+    object.cpp \
+    battlefield.cpp \
+    forefront.cpp \
+    beam.cpp \
+    pager.cpp \
+    intelligence.cpp \
+    modalbutton.cpp
 
 HEADERS += \
     combatunit.h \
@@ -19,4 +25,10 @@ HEADERS += \
     ars.h \
     shell.h \
     gap.h \
-    object.h
+    object.h \
+    battlefield.h \
+    forefront.h \
+    beam.h \
+    pager.h \
+    intelligence.h \
+    modalbutton.h

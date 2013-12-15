@@ -10,15 +10,29 @@
 class Artillery : public CombatUnit {
     Q_OBJECT
 public:
-    Artillery(int id, Side side);
+    Artillery(const QString& name, int id, const Side& side);
 
     QRectF boundingRect() const;
     QPainterPath shape() const;
     void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget);
 
+    int getChargeTime();
+    bool guidance();
+    void fire(int id);
+
 public slots:
-    void fire();
-    void init();
+
+    void fireAndCharge();
+    void guidanceAndFireAndCharge();
+    void fireToDisable();
+
+signals:
+    void ready();
+
+private slots:
+
+    void emitReady();
+    void correction();
 
 private:
     double alpha;
@@ -26,11 +40,16 @@ private:
     double radius;
     int id;
 
-    QTimer timer;
+    int steps;
+
+    bool isGuidanced;
+
+    QTimer* timer;
 
     void mousePressEvent(QGraphicsSceneMouseEvent* event);
 
     qreal angle(const QVector2D& p) const;
+
 };
 
 #endif // ARTILLERY_H

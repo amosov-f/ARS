@@ -3,16 +3,14 @@
 
 #include <QObject>
 
-class Object : public QObject
-{
+class Foo : public QObject {
     Q_OBJECT
 public:
-    explicit Object(QObject *parent = 0);
-
-signals:
-
+    Foo();
 public slots:
-
+    void print();
 };
+
+
 
 #endif // OBJECT_H

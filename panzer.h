@@ -5,7 +5,7 @@
 
 class Panzer : public CombatUnit {
 public:
-    Panzer(Side side);
+    Panzer(const QString& name, const Side& side);
 
     QRectF boundingRect() const;
     QPainterPath shape() const;
